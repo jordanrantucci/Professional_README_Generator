@@ -11,3 +11,13 @@ const promptUser = () => {
     name: 
     message:
 }
+
+
+// write to README file
+function writeToFile(fileName, data) {}
+
+//create a function to initialize app
+function init() {}
+
+// function call to initialze app
+init();

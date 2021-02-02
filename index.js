@@ -3,8 +3,8 @@ const fs = require('fs');
 const util = require('util');
 const writeFileAsync = util.promisify(fs.writeFile)
 
-const promptUser = () => {
-    return inquirer.prompt([
+const promptUser = () =>
+    inquirer.prompt([
     {
         type: 'input',
         name: 'projectName',
@@ -40,15 +40,20 @@ const promptUser = () => {
         name: 'license',
         message: 'What license is needed for this project, Choose the appropriate one: ',
         choices: [
-            'Apache',
-            'Academic',
-            'Articstic',
-            'Eclipse',
-            'GNU',
-            'ISC',
-            'MIT',
-            'Mozilla',
-            'Open',
+            { name: 'None', value: ' '},
+            { name: 'Apache License 2.0', value: '[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)' },
+            { name: 'GNU General Public License v3.0', value: '[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)' },
+            { name: 'MIT License', value: '[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)' },
+            { name: 'BSD 2-Clause "Simplified" License', value: '[![License](https://img.shields.io/badge/License-BSD%202--Clause-orange.svg)](https://opensource.org/licenses/BSD-2-Clause)' },
+            { name: 'BSD 3-Clause "New" or "Revised License', value: '[![License](https://img.shields.io/badge/License-BSD%203--Clause-blue.svg)](https://opensource.org/licenses/BSD-3-Clause)' },
+            { name: 'Boost Software License 1.0', value: '[![License](https://img.shields.io/badge/License-Boost%201.0-lightblue.svg)](https://www.boost.org/LICENSE_1_0.txt)' },
+            { name: 'Creative Commons Zero v1.0 Universal', value: '[![License: CC0-1.0](https://img.shields.io/badge/License-CC0%201.0-lightgrey.svg)](http://creativecommons.org/publicdomain/zero/1.0/)' },
+            { name: 'Eclipse Public License 2.0', value: '[![License](https://img.shields.io/badge/License-EPL%202.0-red.svg)](https://opensource.org/licenses/EPL-2.0)' },
+            { name: 'GNU Affero General Public License v3.0', value: '[![License: AGPL v3](https://img.shields.io/badge/License-AGPL%20v3-blue.svg)](https://www.gnu.org/licenses/agpl-3.0)' },
+            { name: 'GNU General Public License v2.0', value: '[![License: GPL v2](https://img.shields.io/badge/License-GPL%20v2-blue.svg)](https://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html)' },
+            { name: 'GNU Lesser General Public License v2.1', value: '[![License: LGPL v3](https://img.shields.io/badge/License-LGPL%20v2.1-blue.svg)](https://www.gnu.org/licenses/lgpl-2.1)' },
+            { name: 'Mozilla Public License 2.0', value: '[![License: MPL 2.0](https://img.shields.io/badge/License-MPL%202.0-brightgreen.svg)](https://opensource.org/licenses/MPL-2.0)' },
+            { name: 'The Unlicense', value: '[![License: Unlicense](https://img.shields.io/badge/license-Unlicense-blue.svg)](http://unlicense.org/)' }
             ]
     },
     {
@@ -71,17 +76,19 @@ const promptUser = () => {
         name: 'emailAddress',
         message: 'What is your email address?',
     },
-],
+])
 
-const generateReadme = (response) =>
+    const generateReadme = (response) =>
 
 `# ${response.projectName}
 
+${answer.license}
+
 ## Description 
 
-${resonse.projectDescription}
+${response.projectDescription}
 
-##Table of Contents
+## Table of Contents
 
 * [Installation](#installation)
 
@@ -121,14 +128,14 @@ ${response.questions}
 ${response.future}
 
 # Contact
-${response.GitHub} and ${response.emailAddress}`
 
+GitHub username: ${response.GitHub} and Email address: ${response.emailAddress}`
 
-// write to README file
-function writeToFile(fileName, data) {}
+const init = () => {
+    promptUser()
+    .then((response) => writeFileAsync('README.md', generateReadme(response)))
+    .then (() => console.log('Successfully created a README.md'))
+    .catch((err) => console.error(err))
+};
 
-//create a function to initialize app
-function init() {}
-
-// function call to initialze app
 init();

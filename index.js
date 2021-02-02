@@ -1,8 +1,9 @@
-const inquirer = require('inquirer');
-const fs = require('fs');
-const util = require('util');
+const inquirer = require('inquirer'); //this links the npm inquirer
+const fs = require('fs'); // allows for acess to file system
+const util = require('util'); // util is required to print formatted strings as well as some utility functions that are helpful for debugging
 const writeFileAsync = util.promisify(fs.writeFile)
 
+//a series of prompts that will link to the npm and allow the file to be written
 const promptUser = () =>
     inquirer.prompt([
     {
@@ -38,7 +39,7 @@ const promptUser = () =>
     {
         type: 'list',
         name: 'license',
-        message: 'What license is needed for this project, Choose the appropriate one: ',
+        message: 'What license is needed for this project, Choose the appropriate one: ', // the choices are written as an array and the badges were sourced from a github repository and include a list of all the potential licenses 
         choices: [
             { name: 'None', value: ' '},
             { name: 'Apache License 2.0', value: '[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)' },
@@ -77,7 +78,7 @@ const promptUser = () =>
         message: 'What is your email address?',
     },
 ])
-
+    //function to generate the readme using the responses 
     const generateReadme = (response) =>
 
 `# ${response.projectName}
@@ -130,7 +131,7 @@ ${response.future}
 # Contact
 
 GitHub username: ${response.GitHub} and Email address: ${response.emailAddress}`
-
+// this function takes the prompt and it's responses and uses it to generate a README.md
 const init = () => {
     promptUser()
     .then((response) => writeFileAsync('README.md', generateReadme(response)))

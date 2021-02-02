@@ -1,8 +1,10 @@
-# a
+# Professional README Generator
+
+ 
 
 ## Description 
 
-s
+This project allows a user to generate a clean and professional README
 
 ## Table of Contents
 
@@ -23,26 +25,26 @@ s
 * [Contact](#contact)
 
 ## Installation
-d    
+node.js    
 
 ## Usage
-f
+The project is use to generate a README
 
 ## Contributions
-g
+Jordan Rantucci
 
 ## Tests
-h
+none
 
 ## License 
-Academic
+ 
 
 # Questions
-d
+See contact section
 
 # Future
-s
+unknown
 
 # Contact
 
-GitHub username: d and Email address: f
+GitHub username: jordanrantucci and Email address: jordanrantucci@gmail.com

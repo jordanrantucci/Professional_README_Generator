@@ -82,7 +82,7 @@ const promptUser = () =>
 
 `# ${response.projectName}
 
-${answer.license}
+${response.license}
 
 ## Description 
 

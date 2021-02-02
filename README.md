@@ -29,6 +29,7 @@ node.js
 
 ## Usage
 The project is used for generating a README
+![Alt Text](assets/demo.gif)
 
 ## Contributions
 Jordan Rantucci

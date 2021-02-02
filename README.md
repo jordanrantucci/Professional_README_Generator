@@ -4,7 +4,7 @@
 
 ## Description 
 
-This project allows a user to generate a clean and professional README
+The project was made using node.js to generate a professional README
 
 ## Table of Contents
 
@@ -28,7 +28,7 @@ This project allows a user to generate a clean and professional README
 node.js    
 
 ## Usage
-The project is use to generate a README
+The project is used for generating a README
 
 ## Contributions
 Jordan Rantucci
@@ -40,10 +40,10 @@ none
  
 
 # Questions
-See contact section
+See Contact Section
 
 # Future
-unknown
+Unknown
 
 # Contact
 
